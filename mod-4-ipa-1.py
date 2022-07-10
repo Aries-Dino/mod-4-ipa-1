@@ -79,7 +79,7 @@ def tic_tac_toe(board):
     if horizontal.count(True) > 0:
         winner = board[horizontal.index(True)][0]
     elif vertical.count(True) > 0:
-        winner = board[vertical.index(True)][0]
+        winner = board[0][vertical.index(True)]
     elif [board[i][i] for i in range(len(board))].count([board[i][i] for i in range(len(board))][0]) == len([board[i][i] for i in range(len(board))]):
         winner = [board[i][i] for i in range(len(board))][0]
     elif [board[len(board)-1-i][i] for i in range(len(board))].count([board[len(board)-1-i][i] for i in range(len(board))][0]) == len([board[len(board)-1-i][i] for i in range(len(board))]):
@@ -123,9 +123,14 @@ def eta(first_stop, second_stop, route_map):
     y = []
     z = stop1.index(first_stop)
     travel = list(route_map.keys())[z][1]
+
     while list(route_map.keys())[z][1] != second_stop:
-        z = z+1
+        if z < len(route_map)-1:
+            z = z+1
+        else:
+            z = z-(len(route_map)-1)
         travel = travel + "," + list(route_map.keys())[z][1]
+
 
     y.append(travel)
 
