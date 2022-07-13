@@ -87,7 +87,12 @@ def tic_tac_toe(board):
     else:
         winner = "NO WINNER"
     
-    return winner
+    if winner == '':
+        winner_final = "NO WINNER"
+    else:
+        winner_final = winner
+        
+    return winner_final
 
 def eta(first_stop, second_stop, route_map):
     '''ETA. 
